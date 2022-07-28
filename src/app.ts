@@ -1,5 +1,6 @@
-import express from "express";
 import "dotenv/config";
+import "./database/mongoDB";
+import express from "express";
 import { routes } from "./routes/home.routes";
 
 const app = express();
