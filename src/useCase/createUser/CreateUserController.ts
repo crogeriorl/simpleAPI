@@ -11,7 +11,10 @@ export class CreateUserController {
             email,
             password,
         });
-
-        return createPerson;
+        const result = {
+            name: createPerson.name,
+            email: createPerson.email,
+        };
+        return response.status(201).json(result);
     }
 }

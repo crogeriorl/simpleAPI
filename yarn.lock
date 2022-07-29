@@ -2352,6 +2352,13 @@
   dependencies:
     "parse-passwd" "^1.0.0"
 
+"hot-shots@^9.1.0":
+  "integrity" "sha512-CbNGD3/mn8yhVafjATd5/c3LeX1EMJ4IChOyEmC2WUT414TvnjD/O5LvEAPgbkBLHsjpTH1XJqVbQpZuMo+n1g=="
+  "resolved" "https://registry.npmjs.org/hot-shots/-/hot-shots-9.1.0.tgz"
+  "version" "9.1.0"
+  optionalDependencies:
+    "unix-dgram" "2.0.x"
+
 "http-errors@~1.7.2", "http-errors@1.7.2":
   "integrity" "sha512-uUQBt3H/cSIVfch6i1EuPNy/YsRSOUBXTVfZ+yR7Zjez3qjBz6i9+i4zjNaoqcoFVI4lQJ5plg63TvGfRSDCRg=="
   "resolved" "https://registry.npmjs.org/http-errors/-/http-errors-1.7.2.tgz"
