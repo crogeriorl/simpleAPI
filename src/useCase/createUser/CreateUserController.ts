@@ -16,8 +16,8 @@ export class CreateUserController {
                 email: createPerson.email,
             };
             return response.status(201).json(result);
-        } catch (Error) {
-            return response.status(400).json(Error.message);
+        } catch (error) {
+            return response.status(400).json(error.message);
         }
     }
 }
