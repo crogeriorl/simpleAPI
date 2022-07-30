@@ -1,25 +1,27 @@
-import { Person } from "../../model/Person";
+import { User } from "../../model/User";
+import { passwordHash } from "../../utils/PasswordHash";
 
-interface ICreatePerson {
+interface ICreateUser {
     name: string;
     email: string;
     password: string;
 }
 
 export class CreateUserUseCase {
-    async execute({ name, email, password }: ICreatePerson) {
-        const userAlreadyExists = await Person.findOne({ email });
+    async execute({ name, email, password }: ICreateUser) {
+        const HashPassword = new passwordHash();
+        const userAlreadyExists = await User.findOne({ email });
 
         if (userAlreadyExists) {
-            return "User already exists";
+            throw new Error("User already exists");
         }
-
-        const createPerson = await Person.create({
+        const passwordhash = await HashPassword.hash(password);
+        const createUser = await User.create({
             name,
             email,
-            password,
+            password: passwordhash,
         });
 
-        return createPerson;
+        return createUser;
     }
 }
