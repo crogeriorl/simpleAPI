@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { logger } from "../../errors/Winston";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 export class CreateUserController {
@@ -17,6 +18,7 @@ export class CreateUserController {
             };
             return response.status(201).json(result);
         } catch (error) {
+            logger.error(error.message);
             return response.status(400).json(error.message);
         }
     }

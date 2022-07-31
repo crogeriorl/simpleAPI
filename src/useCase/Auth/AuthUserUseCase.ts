@@ -1,6 +1,7 @@
 import { compare } from "bcryptjs";
 import { User } from "../../model/User";
 import jwt from "jsonwebtoken";
+import { logger } from "../../errors/Winston";
 
 interface IAuthUser {
     email: string;
@@ -32,6 +33,7 @@ export class AuthUserUseCase {
                     expiresIn: "1d",
                 }
             );
+            logger.info("User authenticated");
             return { User: user.email, token };
         } catch (error) {
             throw new Error("internal server error");

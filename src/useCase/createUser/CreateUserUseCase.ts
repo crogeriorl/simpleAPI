@@ -1,3 +1,4 @@
+import { logger } from "../../errors/Winston";
 import { User } from "../../model/User";
 import { passwordHash } from "../../utils/PasswordHash";
 
@@ -21,6 +22,7 @@ export class CreateUserUseCase {
             email,
             password: passwordhash,
         });
+        logger.info("user created");
 
         return createUser;
     }
