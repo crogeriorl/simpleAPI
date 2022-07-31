@@ -1,3 +1,4 @@
+import "./infra/tracer";
 import { app } from "./app";
 import { logger } from "./errors/Winston";
 
