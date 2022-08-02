@@ -10,15 +10,15 @@ interface IAuthUser {
 
 export class AuthUserUseCase {
     async execute({ email, password }: IAuthUser) {
-        const user = await User.findOne();
+        const user = await User.findOne({ email });
 
         if (!user) {
             throw new Error("User not found");
         }
 
-        const checkPassowrd = await compare(password, user.password);
+        const checkPassword = await compare(password, user.password);
 
-        if (!checkPassowrd) {
+        if (!checkPassword) {
             throw new Error("Email ou password incorrect");
         }
         try {
@@ -33,7 +33,13 @@ export class AuthUserUseCase {
                     expiresIn: "1d",
                 }
             );
-            logger.info("User authenticated");
+            logger.info({
+                AuthUserUseCase: {
+                    user: email,
+                    token: token,
+                    status: "User authenticated",
+                },
+            });
             return { User: user.email, token };
         } catch (error) {
             throw new Error("internal server error");
