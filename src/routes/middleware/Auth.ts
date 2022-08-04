@@ -18,7 +18,7 @@ export class Auth {
 
             next();
         } catch (error) {
-            return response.json({ error: "token invalid!" });
+            return response.status(401).json({ error: "token invalid!" });
         }
     }
 }

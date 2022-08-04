@@ -22,7 +22,7 @@ export class CreateUserUseCase {
             email,
             password: passwordhash,
         });
-        logger.info("user created");
+        logger.info({ CreateUserUseCase: { user: "created" } });
 
         return createUser;
     }
